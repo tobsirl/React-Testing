@@ -5,6 +5,10 @@ describe('App', () => {
   test('renders App component', () => {
     render(<App />);
 
-    screen.getByText('Search:');
+    // expect(screen.getByText('Search:')).toBeInTheDocument();
+
+    // expect(screen.getByText('Search')).toBeInTheDocument();
+
+    expect(screen.getByText(/search/i)).toBeInTheDocument();
   });
 });
