@@ -1,5 +1,16 @@
 # React Testing
+## Important!
+Use `screen` which is a new export out of React Testing Library
 
+Use `userEvent` rather than `fireEvent`
+
+Latest versions of RTL are using `waitFor` instead of `wait`
+
+Use MSW to mock out HTTP requests
+
+
+<!-- Arrange, act, assert -->
+<!-- Notes jest components describe, test -->
 ## Resources 
 [Jest](https://jestjs.io/) is a delightful JavaScript Testing Framework with a focus on simplicity.
 
