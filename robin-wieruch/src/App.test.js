@@ -9,6 +9,8 @@ describe('App', () => {
 
     // expect(screen.getByText('Search')).toBeInTheDocument();
 
-    expect(screen.getByText(/search/i)).toBeInTheDocument();
+    // expect(screen.getByText(/search/i)).toBeInTheDocument();
+
+    screen.getByRole('');
   });
 });

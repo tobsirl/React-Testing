@@ -8,6 +8,12 @@ Latest versions of RTL are using `waitFor` instead of `wait`
 
 Use MSW to mock out HTTP requests
 
+## DOM Testing Library [Link] (https://testing-library.com/docs/dom-testing-library/intro)
+
+`screen` DOM Testing Library exports a screen object that can be used for querying and debugging, using `screen.debug`
+
+`getByText` 
+
 
 <!-- Arrange, act, assert -->
 <!-- Notes jest components describe, test -->
