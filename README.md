@@ -12,7 +12,18 @@ Use MSW to mock out HTTP requests
 
 `screen` DOM Testing Library exports a screen object that can be used for querying and debugging, using `screen.debug`
 
-`getByText` 
+`getByText` can use both `strings` and `regex`
+
+```js
+expect(screen.getByText(/Search/)).toBeInTheDocument();
+```
+
+`getByRole` is used to retrieve elements. This will also show all the selectable roles if you don't provide a role
+
+```js
+screen.getByRole('');
+```
+
 
 
 <!-- Arrange, act, assert -->
