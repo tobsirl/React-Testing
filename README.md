@@ -24,6 +24,19 @@ expect(screen.getByText(/Search/)).toBeInTheDocument();
 screen.getByRole('');
 expect(screen.getByRole('textbox')).toBeInTheDocument(); // checks for a textbox in the document
 ```
+Other search types which are more element specifc:
+```js
+LabelText: getByLabelText: <label for="search" />
+PlaceholderText: getByPlaceholderText: <input placeholder="Search" />
+AltText: getByAltText: <img alt="profile" />
+DisplayValue: getByDisplayValue: <input value="JavaScript" />
+```
+* getByText
+* getByRole
+* getByLabelText
+* getByPlaceholderText
+* getByAltText
+* getByDisplayValue
 
 
 
