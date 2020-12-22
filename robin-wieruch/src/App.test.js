@@ -11,6 +11,6 @@ describe('App', () => {
 
     // expect(screen.getByText(/search/i)).toBeInTheDocument();
 
-    screen.getByRole('');
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 });
