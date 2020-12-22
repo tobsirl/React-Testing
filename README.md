@@ -8,7 +8,7 @@ Latest versions of RTL are using `waitFor` instead of `wait`
 
 Use MSW to mock out HTTP requests
 
-## DOM Testing Library [Link] (https://testing-library.com/docs/dom-testing-library/intro)
+## [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
 
 `screen` DOM Testing Library exports a screen object that can be used for querying and debugging, using `screen.debug`
 
@@ -22,6 +22,7 @@ expect(screen.getByText(/Search/)).toBeInTheDocument();
 
 ```js
 screen.getByRole('');
+expect(screen.getByRole('textbox')).toBeInTheDocument(); // checks for a textbox in the document
 ```
 
 
