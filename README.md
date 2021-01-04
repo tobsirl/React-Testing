@@ -40,12 +40,29 @@ DisplayValue: getByDisplayValue: <input value="JavaScript" />
 
 
 ## Testing React Components with Jest and React Testing Library
-### 11 Assert That Something is NOT Rendered with React Testing Library
+### 11 - Assert That Something is NOT Rendered with React Testing Library
 If you want to verify that an element is not being rendered, then you're going to use a query that is prefixed with 'query' rather than one that is prefixed with 'get'.
 ```js
 // use queryByRole instead
 expect(queryByRole('alert')).toBeNull()
 ```
+
+### 12 - Test Accessibility of Rendered React Components with jest-axe
+While it may be imposible to completely automate accessibility testing, you can get a lot of low hanging fruit using `jest-axe`.
+
+`toHaveNoViolations` from jest-axe will provide better error messaging.
+
+```js
+import 'jest-axe/extend-expect'
+import { axe, toHaveNoViolations } from 'jest-axe'
+
+test('the form is accessible', () => {
+  const {container} = render(<Form />)
+  const results = await axe(container)
+  expect(results).toHaveNoViolations()
+})
+```
+
 <!-- Arrange, act, assert -->
 <!-- Notes jest components describe, test -->
 ## Resources 
