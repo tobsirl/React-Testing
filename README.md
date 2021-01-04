@@ -39,7 +39,13 @@ DisplayValue: getByDisplayValue: <input value="JavaScript" />
 * getByDisplayValue
 
 
-
+## Testing React Components with Jest and React Testing Library
+### 11 Assert That Something is NOT Rendered with React Testing Library
+If you want to verify that an element is not being rendered, then you're going to use a query that is prefixed with 'query' rather than one that is prefixed with 'get'.
+```js
+// use queryByRole instead
+expect(queryByRole('alert')).toBeNull()
+```
 <!-- Arrange, act, assert -->
 <!-- Notes jest components describe, test -->
 ## Resources 
