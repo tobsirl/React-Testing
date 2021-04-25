@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from 'react';
+import './Counter.css';
 
 function countReducer(state, action) {
   switch (action.type) {

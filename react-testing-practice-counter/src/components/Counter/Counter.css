@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+:root {
+  --ff-zendots: 'Zen Dots', cursive;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: var(--ff-zendots);
+}
+
+button,
+textarea,
+input,
+select {
+  font: inherit;
+}
+
+input[type='number'] {
+  text-align: center;
+  font-size: 3rem;
+  width: 5rem;
+}
