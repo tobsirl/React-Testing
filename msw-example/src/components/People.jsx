@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Person from './Person'
 
-export default function StarWars() {
+export default function People() {
   const [swData, setSwData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -32,7 +33,9 @@ export default function StarWars() {
 
   return (
     <div>
-      <p>{JSON.stringify(swData)}</p>
+      {swData.map((person) => (
+        <Person key={person.name} {...person}/>
+      ))}
     </div>
   )
 }

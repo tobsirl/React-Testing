@@ -1,11 +1,11 @@
 import './App.css'
-import StarWars from './components/StarWars'
+import People from './components/People'
 
 function App() {
   return (
     <div className="App">
       <h1>Star Wars</h1>
-      <StarWars />
+      <People />
     </div>
   )
 }
