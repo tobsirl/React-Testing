@@ -29,12 +29,10 @@ export default function People() {
     return <p>Loading...</p>
   }
 
-  console.log('swData :>> ', swData)
-
   return (
     <div>
       {swData.map((person) => (
-        <Person key={person.name} {...person}/>
+        <Person key={person.name} {...person} />
       ))}
     </div>
   )
