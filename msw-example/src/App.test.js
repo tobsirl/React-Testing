@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import People from './components/People'
 
-test('renders learn react link', () => {
-  render(<App />)
-  const linkElement = screen.getByText(/star wars/i)
-  expect(linkElement).toBeInTheDocument()
+describe('tests for the <People /> component', () => {
+  it('should test for the name of people', async () => {
+    render(<People />)
+
+    screen.debug()
+  })
 })
