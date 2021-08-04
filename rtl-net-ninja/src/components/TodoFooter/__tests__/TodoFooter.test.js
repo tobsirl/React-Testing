@@ -1,10 +1,17 @@
 import { render, screen } from '@testing-library/react'
 import TodoFooter from '../TodoFooter'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const Mock
+const MockTodoFooter = ({ numberOfIncompleteTasks }) => {
+  return (
+    <Router>
+      <TodoFooter numberOfIncompleteTasks={numberOfIncompleteTasks} />
+    </Router>
+  )
+}
 
 it('should render the correct amount of incomplete tasks', async () => {
-  render(<TodoFooter numberOfIncompleteTasks={5} />)
+  render(<MockTodoFooter numberOfIncompleteTasks={5} />)
 
   const paraElement = screen.getByText(/5 tasks left/i)
 
