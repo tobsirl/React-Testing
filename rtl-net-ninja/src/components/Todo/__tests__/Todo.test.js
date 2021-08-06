@@ -50,4 +50,15 @@ describe('tests for the <Todo /> component', () => {
 
     expect(divElement).not.toHaveClass('todo-item-active')
   })
+
+  it('task should have completed class when task is clicked on', async () => {
+    render(<MockTodo />)
+
+    addTodo(['Go Grocery Shopping'])
+
+    const divElement = screen.getByText(/go grocery shopping/i)
+    fireEvent.click(divElement)
+
+    expect(divElement).toHaveClass('todo-item-active')
+  })
 })
