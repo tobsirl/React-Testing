@@ -17,11 +17,10 @@ describe('tests for the <AddInput /> component', () => {
 
     const inputElement = screen.getByPlaceholderText(/add a new task here.../i)
     const addBtn = screen.getByRole('button', { name: /add/i })
-    
+
     fireEvent.change(inputElement, { target: { value: 'walk the dog' } })
     fireEvent.click(addBtn)
 
-
-    expect(inputElement.value).toBe('walk the dog')
+    expect(inputElement.value).toBe('')
   })
 })
