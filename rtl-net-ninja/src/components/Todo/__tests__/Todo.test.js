@@ -19,5 +19,10 @@ describe('tests for the <Todo /> component', () => {
 
     fireEvent.change(inputElement, { target: { value: 'Go Grocery Shopping' } })
     fireEvent.click(buttonElement)
+
+    const divElement = screen.getByText(/go grocery shopping/i)
+    screen.debug()
+
+    expect(divElement).toBeInTheDocument()
   })
 })
