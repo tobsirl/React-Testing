@@ -35,10 +35,19 @@ describe('tests for the <Todo /> component', () => {
     addTodo(['Go Grocery Shopping', 'Walk the dog', 'Feed the fish'])
 
     const [task1, task2, task3] = screen.getAllByTestId(/task-container/i)
-    screen.debug()
 
     expect(task1).toHaveTextContent(/go grocery shopping/i)
     expect(task2).toHaveTextContent(/walk the dog/i)
     expect(task3).toHaveTextContent(/feed the fish/i)
+  })
+
+  it('task should not have completed class when initially rendered', async () => {
+    render(<MockTodo />)
+
+    addTodo(['Go Grocery Shopping'])
+
+    const divElement = screen.getByText(/go grocery shopping/i)
+
+    expect(divElement).not.toHaveClass('todo-item-active')
   })
 })
