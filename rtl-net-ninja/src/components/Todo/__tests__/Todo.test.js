@@ -10,7 +10,25 @@ function MockTodo() {
   )
 }
 
+function addTodo(tasks) {
+  const inputElement = screen.getByPlaceholderText(/add a new task here.../i)
+  const buttonElement = screen.getByRole('button', { name: /add/i })
+  tasks.forEach((task) => {
+    fireEvent.change(inputElement, { target: { value: task } })
+    fireEvent.click(buttonElement)
+  })
+}
+
 describe('tests for the <Todo /> component', () => {
+  it('should render same text passed into title prop', async () => {
+    render(<MockTodo />)
+
+    addTodo(['Go Grocery Shopping'])
+
+    const divElement = screen.getByText(/go grocery shopping/i)
+    expect(divElement).toBeInTheDocument()
+  })
+
   it('should render same text passed into title prop', async () => {
     render(<MockTodo />)
 
