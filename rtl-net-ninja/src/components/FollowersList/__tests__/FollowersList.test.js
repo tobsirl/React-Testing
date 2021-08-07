@@ -14,8 +14,8 @@ describe('tests for the <FollowersList /> component', () => {
   it('should render same text passed into title prop', async () => {
     render(<MockFollowersList />)
 
-   
+    const followerDivElement = await screen.findByTestId('follower-item-0')
 
-    expect(headingElement).toBeInTheDocument()
+    expect(followerDivElement).toBeInTheDocument()
   })
 })
