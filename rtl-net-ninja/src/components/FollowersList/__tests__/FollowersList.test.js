@@ -1,6 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import FollowersList from '../FollowersList'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+import { data } from './__fixtures__/FollowersList.fixtures'
+
+const server = setupServer(
+  rest.get('https://randomuser.me/api/?results=5', (req, res, ctx) => {
+    return res(ctx.json(data.results))
+  }),
+)
 
 function MockFollowersList() {
   return (
