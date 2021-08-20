@@ -16,3 +16,18 @@ Then run this code with `node 2.todo`
  */
 
 const { sum, subtract } = require('./math');
+
+const result = sum(7, 3);
+const expected = 10;
+
+function expect(actual) {
+  return {
+    toBe(expected) {
+      if (expected !== actual) {
+        throw new Error(`The result ${actual} is not equal to the ${expected}`);
+      }
+    },
+  };
+}
+
+expect(expected).toBe(result);
