@@ -12,8 +12,10 @@ test('integration test', async () => {
 
   const userInput = screen.getByLabelText(/username/i);
   user.type(userInput, USER);
+
   const passwordInput = screen.getByLabelText(/password/i);
   user.type(passwordInput, PASS);
+  
   const submitButton = screen.getByText(/submit/i);
 
   userEvent.click(submitButton);

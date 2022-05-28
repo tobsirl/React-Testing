@@ -49,7 +49,9 @@ export default function Counter({ initialState = 0 }) {
   return (
     <div>
       <h1>My Counter</h1>
-      <h1>{count}</h1>
+      <h1 className={`${count >= 100 ? 'green' : ''}${count < 0 ? 'red' : ''}`}>
+        {count}
+      </h1>
 
       <button onClick={decrement}>-</button>
       <input type="number" value={step} onChange={handleChange} />
