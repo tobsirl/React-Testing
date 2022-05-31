@@ -79,3 +79,16 @@ it('should turn the button gray when disabled', () => {
 
   expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
 });
+
+it('should click button to change color, disable button and check if gray', () => {
+  render(<App />);
+
+  const colorButton = screen.getByRole('button', { name: /change to blue/i });
+  const checkbox = screen.getByRole('checkbox', { name: /disable button/i });
+
+  fireEvent.click(colorButton);
+
+  fireEvent.click(checkbox);
+
+  expect(colorButton).toHaveStyle({ backgroundColor: 'gray' });
+});
