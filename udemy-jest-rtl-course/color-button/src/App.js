@@ -16,7 +16,7 @@ function App() {
     <div>
       <button
         style={{
-          backgroundColor: buttonColor,
+          backgroundColor: disabled ? 'gray' : buttonColor,
           padding: '20px',
           fontSize: '24px',
         }}
