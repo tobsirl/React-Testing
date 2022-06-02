@@ -111,15 +111,15 @@ it('should check that enable button is blue', () => {
 });
 
 describe('spaces before camel-case capital letters', () => {
-  it('Works for no inner capital letters ', () => {
-    replaceCamelWithSpaces
+  it('Works for no inner capital letters', () => {
+    expect(replaceCamelWithSpaces('Red')).toBe('Red');
   });
 
   it('Works for one inner capital letters', () => {
-    
+    expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue');
   });
 
   it('Works for multiple inner capital letters', () => {
-    
+    expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red');
   });
 });
