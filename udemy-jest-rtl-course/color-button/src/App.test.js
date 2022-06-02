@@ -109,3 +109,4 @@ it('should check that enable button is blue', () => {
 
   expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
 });
+
