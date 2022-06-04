@@ -1,4 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import {
+  render,
+  screen,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import SummaryForm from '../SummaryForm'
 
@@ -33,7 +38,7 @@ it('Checkbox disables button on first click and enables on second click', () => 
   expect(confirmBtn).toBeDisabled()
 })
 
-it('popover responds to hover', () => {
+it('popover responds to hover', async () => {
   render(<SummaryForm />)
   // popover starts out hidden
   const nullPopover = screen.queryByText(
@@ -51,8 +56,7 @@ it('popover responds to hover', () => {
 
   // popover disappears when we mouse out
   userEvent.unhover(termsAndConditions)
-  const nullPopoverAgain = screen.queryByText(
-    /no ice cream will actually be delivered/i,
+  await waitForElementToBeRemoved(() =>
+    screen.queryByText(/no ice cream will actually be delivered/i),
   )
-  expect(nullPopoverAgain).not.toBeInTheDocument()
 })
