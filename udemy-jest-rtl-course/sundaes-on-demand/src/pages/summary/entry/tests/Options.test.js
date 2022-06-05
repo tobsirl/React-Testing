@@ -26,5 +26,9 @@ it('displays image for each toppings option from the server', async () => {
 
   // confirm alt text of images
   const altText = toppingsImages.map((el) => el.alt)
-  expect(altText).toEqual(['Cherries', 'M&Ms', 'Hot fudge'])
+  expect(altText).toEqual([
+    'Cherries topping',
+    'M&Ms topping',
+    'Hot fudge topping',
+  ])
 })
