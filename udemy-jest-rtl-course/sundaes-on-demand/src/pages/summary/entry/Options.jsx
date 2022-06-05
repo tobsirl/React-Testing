@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ScoopOption from './ScoopOption'
+import { Row } from 'react-bootstrap'
 
 export default function Options({ optionType }) {
   const [items, setItems] = useState([])
@@ -26,5 +27,5 @@ export default function Options({ optionType }) {
     />
   ))
 
-  return <div>{optionItems}</div>
+  return <Row>{optionItems}</Row>
 }
