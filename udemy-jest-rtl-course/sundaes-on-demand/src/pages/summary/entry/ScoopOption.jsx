@@ -1,3 +1,3 @@
-export default function ScoopOption() {
+export default function ScoopOption({ name, imagePath }) {
   return <div />
 }
