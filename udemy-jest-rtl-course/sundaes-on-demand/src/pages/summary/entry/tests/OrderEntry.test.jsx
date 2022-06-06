@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import OrderEntry from '../OrderEntry'
 import { rest } from 'msw'
-import { server } from '../../../mocks/server'
+import { server } from '../../../../mocks/server'
 
 it('handles error for scoops and toppings routes', async () => {
   server.resetHandlers(
@@ -15,9 +15,8 @@ it('handles error for scoops and toppings routes', async () => {
 
   render(<OrderEntry />)
 
-  const alerts = await screen.findAllByRole('alert', {
-    name: /an unexpected error occurred. Please try again later./i,
+  await waitFor(async () => {
+    const alerts = await screen.findAllByRole('alert')
+    expect(alerts).toHaveLength(2)
   })
-
-  expect(alerts).toHaveLength(2)
 })
