@@ -19,11 +19,11 @@ it('update scoop subtotal when scoops change', async () => {
   expect(scoopsSubtotal).toHaveTextContent('2.00')
 
   // update chocolate scoops to 2 and check subtotal
-  const cocolateInput = await screen.findByRole('spinbutton', {
+  const chocolateInput = await screen.findByRole('spinbutton', {
     name: /chocolate/i,
   })
 
-  userEvent.clear(cocolateInput)
-  userEvent.type(cocolateInput, '2')
+  userEvent.clear(chocolateInput)
+  userEvent.type(chocolateInput, '2')
   expect(scoopsSubtotal).toHaveTextContent()
 })
