@@ -16,6 +16,11 @@ function useOrderDetails() {
 }
 
 function OrderDetailsProvider(props) {
+  const [optionCounts, setOptionCounts] = useState({
+    scoops: new Map(),
+    toppings: new Map(),
+  })
+  
   // getter: object containing option counts for scoops and toppings, subtotal and totals
   // setter: updateOptionCount
   const value = useMemo(() => {
