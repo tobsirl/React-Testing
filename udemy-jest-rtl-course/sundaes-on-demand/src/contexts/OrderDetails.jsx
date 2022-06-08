@@ -20,11 +20,21 @@ function OrderDetailsProvider(props) {
     scoops: new Map(),
     toppings: new Map(),
   })
-  
+
   // getter: object containing option counts for scoops and toppings, subtotal and totals
   // setter: updateOptionCount
   const value = useMemo(() => {
-    return []
+    function updateItemCount(itemName, newItemCount, optionType) {
+      const newOptionCounts = { ...optionCounts }
+
+      // update option count for this item with the new value
+      const optionCountsMap = optionCounts[optionType]
+      optionCountsMap.set(itemName, parseInt(newItemCount))
+
+      setOptionCounts(newOptionCounts)
+    }
+
+    return [{ ...optionCounts }, updateItemCount]
   }, [])
   return <OrderDetails.Provider value={value} {...props} />
 }
