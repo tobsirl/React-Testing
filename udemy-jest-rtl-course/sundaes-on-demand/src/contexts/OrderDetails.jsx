@@ -4,7 +4,7 @@ import { pricePerItem } from '../constants'
 const OrderDetails = createContext()
 
 // create custom hook to check whether we're inside a provider
-function useOrderDetails() {
+export function useOrderDetails() {
   const context = useContext(OrderDetails)
 
   if (!context) {
@@ -26,7 +26,7 @@ function calculateSubtotal(optionType, optionCounts) {
   return optionCount * pricePerItem[optionType]
 }
 
-function OrderDetailsProvider(props) {
+export function OrderDetailsProvider(props) {
   const [optionCounts, setOptionCounts] = useState({
     scoops: new Map(),
     toppings: new Map(),
@@ -48,10 +48,6 @@ function OrderDetailsProvider(props) {
       toppings: toppingsSubtotal,
       grandTotal,
     })
-
-    return () => {
-      second
-    }
   }, [optionCounts])
 
   // getter: object containing option counts for scoops and toppings, subtotal and totals
@@ -68,6 +64,6 @@ function OrderDetailsProvider(props) {
     }
 
     return [{ ...optionCounts }, updateItemCount]
-  }, [optionCounts])
+  }, [optionCounts, totals])
   return <OrderDetails.Provider value={value} {...props} />
 }
