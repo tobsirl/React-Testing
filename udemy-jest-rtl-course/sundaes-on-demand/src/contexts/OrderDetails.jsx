@@ -21,6 +21,28 @@ function OrderDetailsProvider(props) {
     toppings: new Map(),
   })
 
+  const [totals, setTotals] = useState({
+    scoops: 0,
+    toppings: 0,
+    grandTotal: 0,
+  })
+
+  useEffect(() => {
+    const scoopsSubtotal = calculateSubtotal('scoops', optionCounts)
+    const toppingsSubtotal = calculateSubtotal('toppings', optionCounts)
+    const grandTotal = scoopsSubtotal + toppingsSubtotal
+
+    setTotals({
+      scoops: scoopsSubtotal,
+      toppings: toppingsSubtotal,
+      grandTotal,
+    })
+
+    return () => {
+      second
+    }
+  }, [optionCounts])
+
   // getter: object containing option counts for scoops and toppings, subtotal and totals
   // setter: updateOptionCount
   const value = useMemo(() => {
@@ -35,6 +57,6 @@ function OrderDetailsProvider(props) {
     }
 
     return [{ ...optionCounts }, updateItemCount]
-  }, [])
+  }, [optionCounts])
   return <OrderDetails.Provider value={value} {...props} />
 }
