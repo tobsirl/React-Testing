@@ -1,6 +1,10 @@
 import { Col, Form, Row } from 'react-bootstrap'
 
 export default function ScoopOption({ name, imagePath, updateItemCount }) {
+  function handleChange(event) {
+    updateItemCount(name, event.target.value)
+  }
+
   return (
     <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: 'center' }}>
       <img
@@ -17,7 +21,11 @@ export default function ScoopOption({ name, imagePath, updateItemCount }) {
           {name}
         </Form.Label>
         <Col xs="5" style={{ textAlign: 'left' }}>
-          <Form.Control type="number" defaultValue={0} />
+          <Form.Control
+            type="number"
+            defaultValue={0}
+            onChange={handleChange}
+          />
         </Col>
       </Form.Group>
     </Col>
