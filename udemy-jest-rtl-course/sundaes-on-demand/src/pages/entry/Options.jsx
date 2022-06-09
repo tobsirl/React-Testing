@@ -4,10 +4,12 @@ import AlertBanner from '../../common/AlertBanner'
 import { pricePerItem } from '../../constants'
 import ScoopOption from './ScoopOption'
 import ToppingOption from './ToppingOption'
+import { useOrderDetails } from '../../contexts/OrderDetails'
 
 export default function Options({ optionType }) {
   const [items, setItems] = useState([])
   const [error, setError] = useState(false)
+  const [OrderDetails, updateItemCount] = useOrderDetails()
 
   // optionType is scoops or toppings
   useEffect(() => {
@@ -29,6 +31,9 @@ export default function Options({ optionType }) {
       key={item.name}
       name={item.name}
       imagePath={item.imagePath}
+      updateItemCount={(itemName, newItemCount) =>
+        updateItemCount(itemName, newItemCount, optionType)
+      }
     />
   ))
 
