@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { OrderDetailsProvider } from '../../../contexts/OrderDetails'
 import Options from '../Options'
 
 it('update scoop subtotal when scoops change', async () => {

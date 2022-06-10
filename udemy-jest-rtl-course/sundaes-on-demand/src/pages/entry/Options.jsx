@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Row } from 'react-bootstrap'
-import AlertBanner from '../../common/AlertBanner'
+import AlertBanner from './../common/AlertBanner'
 import { pricePerItem } from '../../constants'
 import ScoopOption from './ScoopOption'
 import ToppingOption from './ToppingOption'
