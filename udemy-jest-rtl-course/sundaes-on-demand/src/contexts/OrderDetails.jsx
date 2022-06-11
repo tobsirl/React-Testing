@@ -1,12 +1,13 @@
 import { createContext, useContext, useState, useMemo, useEffect } from 'react'
 import { pricePerItem } from '../constants'
 
-function formatCurrency(currency) {
+// format number as currency
+function formatCurrency(amount) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
-  }).format(currency)
+  }).format(amount)
 }
 
 const OrderDetails = createContext()
@@ -72,7 +73,8 @@ export function OrderDetailsProvider(props) {
       setOptionCounts(newOptionCounts)
     }
 
-    return [{ ...optionCounts }, updateItemCount]
+    return [{ ...optionCounts, totals }, updateItemCount]
   }, [optionCounts, totals])
+
   return <OrderDetails.Provider value={value} {...props} />
 }

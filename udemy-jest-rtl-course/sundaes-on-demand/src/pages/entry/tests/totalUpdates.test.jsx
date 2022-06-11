@@ -4,10 +4,10 @@ import { OrderDetailsProvider } from '../../../contexts/OrderDetails'
 import Options from '../Options'
 
 it('update scoop subtotal when scoops change', async () => {
-  render(<Options optionType="scoops" />)
+  render(<Options optionType="scoops" />, { wrapper: OrderDetailsProvider })
 
   // make sure total starts out $0.00
-  const scoopsSubtotal = screen.getByText('scoops total: $', { exact: false })
+  const scoopsSubtotal = screen.getByText('Scoops total: $', { exact: false })
   expect(scoopsSubtotal).toHaveTextContent('0.00')
 
   // update vanilla scoops to 1 and check the subtotal
@@ -26,5 +26,5 @@ it('update scoop subtotal when scoops change', async () => {
 
   userEvent.clear(chocolateInput)
   userEvent.type(chocolateInput, '2')
-  expect(scoopsSubtotal).toHaveTextContent()
+  expect(scoopsSubtotal).toHaveTextContent('6.00')
 })
