@@ -44,8 +44,15 @@ it('update toppings subtotal when toppings change', async () => {
 
   userEvent.click(cherriesCheckbox)
   expect(toppingsSubtotal).toHaveTextContent('1.50')
-})
 
-// { name: 'Cherries', imagePath: '/images/cherries.png' },
-// { name: 'M&Ms', imagePath: '/images/m-and-ms.png' },
-// { name: 'Hot fudge', imagePath: '/images/hot-fudge.png' },
+  // add hot fudge and check subTotal
+  const hotFudgeCheckbox = await screen.findByRole('checkbox', {
+    name: /hot fudge/i,
+  })
+  userEvent.click(hotFudgeCheckbox)
+  expect(toppingsSubtotal).toHaveTextContent('3.00')
+
+  // remove hot fudge and check subtotal
+  userEvent.click(hotFudgeCheckbox)
+  expect(toppingsSubtotal).toHaveTextContent('1.50')
+})
