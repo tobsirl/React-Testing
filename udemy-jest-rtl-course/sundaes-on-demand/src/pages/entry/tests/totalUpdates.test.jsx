@@ -36,4 +36,11 @@ it('update toppings subtotal when toppings change', async () => {
     exact: false,
   })
   expect(toppingsSubtotal).toHaveTextContent('0.00')
+
+  
 })
+
+
+// { name: 'Cherries', imagePath: '/images/cherries.png' },
+// { name: 'M&Ms', imagePath: '/images/m-and-ms.png' },
+// { name: 'Hot fudge', imagePath: '/images/hot-fudge.png' },
