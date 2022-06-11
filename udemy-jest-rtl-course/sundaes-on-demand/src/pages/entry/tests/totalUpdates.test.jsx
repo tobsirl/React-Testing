@@ -27,3 +27,13 @@ it('update scoop subtotal when scoops change', async () => {
   userEvent.type(chocolateInput, '2')
   expect(scoopsSubtotal).toHaveTextContent('6.00')
 })
+
+it('update toppings subtotal when toppings change', async () => {
+  render(<Options optionType="toppings" />)
+
+  // make sure total starts out $0.00
+  const toppingsSubtotal = screen.getByText('Toppings total: $', {
+    exact: false,
+  })
+  expect(toppingsSubtotal).toHaveTextContent('0.00')
+})
