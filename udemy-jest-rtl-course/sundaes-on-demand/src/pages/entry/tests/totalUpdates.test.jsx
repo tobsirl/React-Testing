@@ -37,9 +37,14 @@ it('update toppings subtotal when toppings change', async () => {
   })
   expect(toppingsSubtotal).toHaveTextContent('0.00')
 
-  
-})
+  // add cherries and check total
+  const cherriesCheckbox = await screen.findByRole('checkbox', {
+    name: /cherries/i,
+  })
 
+  userEvent.click(cherriesCheckbox)
+  expect(toppingsSubtotal).toHaveTextContent('1.50')
+})
 
 // { name: 'Cherries', imagePath: '/images/cherries.png' },
 // { name: 'M&Ms', imagePath: '/images/m-and-ms.png' },
