@@ -69,7 +69,7 @@ describe('grand total', () => {
   it('grand total updates properly if scoop is added first', async () => {
     render(<OrderEntry />)
 
-    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/i })
 
     const vanillaInput = await screen.findByRole('spinbutton', {
       name: 'Vanilla',
@@ -90,7 +90,7 @@ describe('grand total', () => {
   it('grand total updates properly if topping is added first', async () => {
     render(<OrderEntry />)
 
-    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/i })
 
     const cherriesCheckbox = await screen.findByRole('checkbox', {
       name: 'Cherries',
@@ -126,7 +126,7 @@ describe('grand total', () => {
     userEvent.clear(vanillaInput)
     userEvent.type(vanillaInput, '1')
 
-    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/i })
     expect(grandTotal).toHaveTextContent('3.50')
 
     userEvent.click(cherriesCheckbox)
