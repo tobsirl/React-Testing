@@ -1,6 +1,7 @@
 import { render, screen } from '../../../test-utils/testing-library-utils'
 import userEvent from '@testing-library/user-event'
 import Options from '../Options'
+import OrderEntry from '../OrderEntry'
 
 it('update scoop subtotal when scoops change', async () => {
   render(<Options optionType="scoops" />)
@@ -57,20 +58,55 @@ it('update toppings subtotal when toppings change', async () => {
   expect(toppingsSubtotal).toHaveTextContent('1.50')
 })
 
-describe('grand total', () => { 
+describe('grand total', () => {
   it('grand total starts at $0.00', () => {
-    
-  });
+    render(<OrderEntry />)
 
-  it('grand total updates properly if scoop is added first', () => {
-    
-  });
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    expect(grandTotal).toHaveTextContent('0.00')
+  })
 
-  it('grand total updates properly if topping is added first', () => {
-    
-  });
+  it('grand total updates properly if scoop is added first', async () => {
+    render(<OrderEntry />)
 
-  it('grand total updates properly if an item is removed', () => {
-    
-  });
- })
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+
+    const vanillaInput = await screen.findByRole('spinbutton', {
+      name: 'Vanilla',
+    })
+
+    userEvent.clear(vanillaInput)
+    userEvent.type(vanillaInput, '2')
+    expect(grandTotal).toHaveTextContent('4.00')
+
+    const cherriesCheckbox = await screen.findByRole('checkbox', {
+      name: 'Cherries',
+    })
+
+    userEvent.click(cherriesCheckbox)
+    expect(grandTotal).toHaveTextContent('5.50')
+  })
+
+  it('grand total updates properly if topping is added first', async () => {
+    render(<OrderEntry />)
+
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+
+    const cherriesCheckbox = await screen.findByRole('checkbox', {
+      name: 'Cherries',
+    })
+
+    userEvent.click(cherriesCheckbox)
+    expect(grandTotal).toHaveTextContent('1.50')
+
+    const vanillaInput = await screen.findByRole('spinbutton', {
+      name: 'Vanilla',
+    })
+
+    userEvent.clear(vanillaInput)
+    userEvent.type(vanillaInput, '2')
+    expect(grandTotal).toHaveTextContent('5.50')
+  })
+
+  it('grand total updates properly if an item is removed', () => {})
+})
