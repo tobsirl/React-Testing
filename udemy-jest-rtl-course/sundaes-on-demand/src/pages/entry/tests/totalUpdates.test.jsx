@@ -56,3 +56,21 @@ it('update toppings subtotal when toppings change', async () => {
   userEvent.click(hotFudgeCheckbox)
   expect(toppingsSubtotal).toHaveTextContent('1.50')
 })
+
+describe('grand total', () => { 
+  it('grand total starts at $0.00', () => {
+    
+  });
+
+  it('grand total updates properly if scoop is added first', () => {
+    
+  });
+
+  it('grand total updates properly if topping is added first', () => {
+    
+  });
+
+  it('grand total updates properly if an item is removed', () => {
+    
+  });
+ })
