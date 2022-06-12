@@ -108,5 +108,28 @@ describe('grand total', () => {
     expect(grandTotal).toHaveTextContent('5.50')
   })
 
-  it('grand total updates properly if an item is removed', () => {})
+  it('grand total updates properly if an item is removed', async () => {
+    render(<OrderEntry />)
+
+    const cherriesCheckbox = await screen.findByRole('checkbox', {
+      name: 'Cherries',
+    })
+
+    userEvent.click(cherriesCheckbox)
+
+    const vanillaInput = await screen.findByRole('spinbutton', {
+      name: 'Vanilla',
+    })
+    userEvent.clear(vanillaInput)
+    userEvent.type(vanillaInput, '2')
+
+    userEvent.clear(vanillaInput)
+    userEvent.type(vanillaInput, '1')
+
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    expect(grandTotal).toHaveTextContent('3.50')
+
+    userEvent.click(cherriesCheckbox)
+    expect(grandTotal).toHaveTextContent('2.0')
+  })
 })
