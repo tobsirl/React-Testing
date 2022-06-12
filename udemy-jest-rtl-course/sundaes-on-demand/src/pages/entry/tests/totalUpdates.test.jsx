@@ -62,7 +62,7 @@ describe('grand total', () => {
   it('grand total starts at $0.00', () => {
     render(<OrderEntry />)
 
-    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/ })
+    const grandTotal = screen.getByRole('heading', { name: /grand total: \$/i })
     expect(grandTotal).toHaveTextContent('0.00')
   })
 
