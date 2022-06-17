@@ -41,4 +41,8 @@ it('order phases for happy path', async () => {
   })
 
   expect(toppingsHeading).toBeInTheDocument()
+
+  expect(screen.getByText('1 Vanilla')).toBeInTheDocument()
+  expect(screen.getByText('2 Chocolate')).toBeInTheDocument()
+  expect(screen.getByText('3 Cherries')).toBeInTheDocument()
 })
