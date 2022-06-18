@@ -66,4 +66,15 @@ it('order phases for happy path', async () => {
 
   const orderNumber = await screen.findByText(/order number/i)
   expect(orderNumber).toBeInTheDocument()
+
+  const newOrderButton = screen.getByRole('button', { name: /new order/i })
+  userEvent.click(newOrderButton)
+
+  const scoopsTotal = screen.getByText('Scoops total: $0.00')
+  expect(scoopsTotal).toBeInTheDocument()
+  const toppingsTotal = screen.getByText('Scoops total: $0.00')
+  expect(toppingsTotal).toBeInTheDocument()
+
+  await screen.findByRole('spinbutton', { name: 'Vanilla' })
+  await screen.findByRole('checkbox', { name: 'Cherries' })
 })
