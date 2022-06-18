@@ -33,7 +33,7 @@ it('order phases for happy path', async () => {
   const summaryHeading = screen.getByRole('heading', { name: /order summary/i })
   expect(summaryHeading).toBeInTheDocument()
 
-  const scoopsHeading = screen.getByRole('heading', { name: 'scoops: $6.00' })
+  const scoopsHeading = screen.getByRole('heading', { name: 'Scoops: $6.00' })
   expect(scoopsHeading).toBeInTheDocument()
 
   const toppingsHeading = screen.getByRole('heading', {
