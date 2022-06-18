@@ -44,7 +44,7 @@ it('order phases for happy path', async () => {
 
   expect(screen.getByText('1 Vanilla')).toBeInTheDocument()
   expect(screen.getByText('2 Chocolate')).toBeInTheDocument()
-  expect(screen.getByText('3 Cherries')).toBeInTheDocument()
+  expect(screen.getByText('Cherries')).toBeInTheDocument()
 
   const tcCheckbox = screen.getByRole('checkbox', {
     name: /terms and conditions/i,
