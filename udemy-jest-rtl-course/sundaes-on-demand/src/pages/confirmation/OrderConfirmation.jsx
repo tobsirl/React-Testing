@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import { useOrderDetails } from '../../contexts/OrderDetails'
@@ -9,12 +10,12 @@ export default function OrderConfirmation({ setOrderPhase }) {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    fetch(
-      // in a real app we would get order details from context
-      // and send with POST
-      `http://localhost:3030/order`,
-      { method: 'POST' },
-    )
+    axios
+      .post(
+        // in a real app we would get order details from context
+        // and send with POST
+        `http://localhost:3030/order`,
+      )
       .then((response) => {
         setOrderNumber(response.data.orderNumber)
       })
@@ -33,10 +34,11 @@ export default function OrderConfirmation({ setOrderPhase }) {
     setOrderPhase('inProgress')
   }
 
+  console.log('orderNumber', orderNumber)
   if (orderNumber) {
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1>Thank You</h1>
+        <h1>Thank You!</h1>
         <p>Your order number is {orderNumber}</p>
         <p style={{ fontSize: '25%' }}>
           as per our terms and conditions, nothing will happen now
